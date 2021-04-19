@@ -1,0 +1,35 @@
+{
+  "name": "nodejs-rest-api",
+  "version": "1.0.0",
+  "description": "App que cadastra pessoas e cidades.",
+  "main": "index.js",
+  "repository": "https://github.com/marcosleonel/nodejs-rest-api",
+  "author": "Marcos Leonel <leonel.coder@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest",
+    "lint": "./node_modules/.bin/eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn test"
+    }
+  },
+  "engine": {
+    "node": ">=10.6.0"
+  }
+}

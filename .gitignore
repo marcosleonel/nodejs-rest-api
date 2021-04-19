@@ -1,0 +1,26 @@
+.git
+
+# Dependency directories
+node_modules/
+
+#Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+server/logger/logs/debug.log
+server/logger/logs/exceptions.log
+api/logger/logs/debug.log
+api/logger/logs/exceptions.log
+logger/logs/
+
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# Optional eslint cache
+.eslintcache
