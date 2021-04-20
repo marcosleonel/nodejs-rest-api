@@ -6,27 +6,17 @@ const Customers = require('../modules/customers/model.customers');
 const createCustomer = {
   path: '/v1/customers',
 
-  method: 'POST',
+  method: 'PUT',
 
   handler: async (request, h) => {
-    const {
-      fullName,
-      gender,
-      birthdate,
-      age,
-      city,
-    } = request.query;
     let response;
 
     try {
-      const newCustomer = Customers.build({
-        fullName,
-        gender,
-        birthdate,
-        age,
-        city,
+      await Customers.update(request.query, {
+        where: {
+          id: request.query.id,
+        },
       });
-      await newCustomer.save();
 
       response = h.response({ msg: 'success' });
       response.type('application/json');
@@ -44,6 +34,7 @@ const createCustomer = {
     tags: ['api', 'customers', 'create'],
     validate: {
       query: Joi.object({
+        id: Joi.string(),
         fullName: Joi.string(),
         gender: Joi.string(),
         birthdate: Joi.date(),

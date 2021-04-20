@@ -16,8 +16,8 @@ const createCity = {
       const newCity = City.build({ name, state });
       await newCity.save();
 
-      response = h.response('success');
-      response.type('text/plain');
+      response = h.response({ msg: 'success' });
+      response.type('application/json');
     } catch (error) {
       logger.error(`[createCity.handler] Error handling the request: ${error.stack}`);
       Boom.badRequest('Internal Error');
