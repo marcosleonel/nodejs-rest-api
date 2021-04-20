@@ -7,7 +7,8 @@
   "author": "Marcos Leonel <leonel.coder@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon --inspect=0.0.0.0:9229 index.js",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint ."
   },
@@ -31,5 +32,19 @@
   },
   "engine": {
     "node": ">=10.6.0"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.2",
+    "@hapi/hapi": "^20.1.2",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/vision": "^6.0.1",
+    "hapi-swagger": "^14.1.1",
+    "joi": "^17.4.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2",
+    "winston": "^3.3.3"
   }
 }
