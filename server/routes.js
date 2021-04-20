@@ -1,7 +1,9 @@
-const createCity = require('../routes/cities.create');
+const cityCreate = require('../routes/cities.create');
+const customerCreate = require('../routes/customers.create');
 
 const routes = [
-  createCity,
+  cityCreate,
+  customerCreate,
 ];
 
 module.exports = routes;
