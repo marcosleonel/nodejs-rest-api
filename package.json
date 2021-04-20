@@ -7,11 +7,10 @@
   "author": "Marcos Leonel <leonel.coder@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dev": "nodemon --inspect=0.0.0.0:9229 index.js",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint .",
-    "migrate": "node ./db/migrate.js"
+    "lint": "./node_modules/.bin/eslint ."
   },
   "devDependencies": {
     "eslint": "^7.24.0",

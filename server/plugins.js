@@ -1,17 +1,17 @@
 const HapiSwagger = require('hapi-swagger');
-const Vision = require('@hapi/vision');
 const Inert = require('@hapi/inert');
+const Vision = require('@hapi/vision');
 const routes = require('./routes');
 
 /**
- * Register the routes, plugins and its options in a Hapi.js server.
- * @param {Hapi.server} server A configured server.
+ * Registra as rotas, plugins e opções em server Hapi.js server.
+ * @param {Hapi.server} server Um server configurado.
  * @see https://github.com/glennjones/hapi-swagger/blob/HEAD/optionsreference.md
  */
 const registerPlugins = async (server) => { // eslint-disable-line
   await server.register([
-    Vision,
     Inert,
+    Vision,
     {
       plugin: HapiSwagger,
       options: {

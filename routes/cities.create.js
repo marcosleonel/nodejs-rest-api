@@ -18,6 +18,7 @@ const createCity = {
 
       response = h.response({ msg: 'success' });
       response.type('application/json');
+      response.code(201);
     } catch (error) {
       logger.error(`[createCity.handler] Error handling the request: ${error.stack}`);
       Boom.badRequest('Internal Error');

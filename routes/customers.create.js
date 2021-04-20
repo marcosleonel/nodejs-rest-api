@@ -30,6 +30,7 @@ const createCustomer = {
 
       response = h.response({ msg: 'success' });
       response.type('application/json');
+      response.code(201);
     } catch (error) {
       logger.error(`[createCustomer.handler] Error handling the request: ${error.stack}`);
       Boom.badRequest('Internal Error');
