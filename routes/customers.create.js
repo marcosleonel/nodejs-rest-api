@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const logger = require('../logger/logger');
-const Customers = require('../modules/customers/model.customers');
+const CustomersQuery = require('../modules/customers/queries.customers');
 
 const createCustomer = {
   path: '/v1/customers',
@@ -19,14 +19,8 @@ const createCustomer = {
     let response;
 
     try {
-      const newCustomer = Customers.build({
-        fullName,
-        gender,
-        birthdate,
-        age,
-        city,
-      });
-      await newCustomer.save();
+      const newCustomer = new CustomersQuery(fullName, gender, birthdate, age, city);
+      await newCustomer.create();
 
       response = h.response({ msg: 'success' });
       response.type('application/json');

@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const logger = require('../logger/logger');
-const Customers = require('../modules/customers/model.customers');
+const CustomersQuery = require('../modules/customers/queries.customers');
 
 const listCustomerByName = {
   path: '/v1/customers/fullName/{fullName}',
@@ -13,11 +13,8 @@ const listCustomerByName = {
     let response;
 
     try {
-      const customers = await Customers.findAll({
-        where: {
-          fullName,
-        },
-      });
+      const findCustomerByFullName = new CustomersQuery(fullName);
+      const customers = await findCustomerByFullName.findByName();
 
       response = h.response(customers);
       response.type('application/json');

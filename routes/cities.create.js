@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const logger = require('../logger/logger');
-const City = require('../modules/cities/model.cities');
+const CitiesQuery = require('../modules/cities/queries.cities');
 
 const createCity = {
   path: '/v1/cities',
@@ -13,8 +13,8 @@ const createCity = {
     let response;
 
     try {
-      const newCity = City.build({ name, state });
-      await newCity.save();
+      const city = new CitiesQuery(name, state);
+      await city.create();
 
       response = h.response({ msg: 'success' });
       response.type('application/json');

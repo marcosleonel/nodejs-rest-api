@@ -11,16 +11,16 @@ const server = Hapi.server({
 server.route([...routes]);
 
 describe('User routes', () => {
-  beforeAll(async () => { // eslint-disable-line
+  beforeAll(async () => {
     await server.start();
     await db.sync({ force: true });
   });
 
-  afterAll(async () => { // eslint-disable-line
+  afterAll(async () => {
     await server.stop();
   });
 
-  it('should return Status Code 201 for /cities POST method', () => { // eslint-disable-line
+  it('should return Status Code 201 for /cities POST method', () => {
     const url = '/v1/cities?name=Novigrad&state=Nothern Realms';
 
     return request(server.listener)
@@ -30,7 +30,7 @@ describe('User routes', () => {
       });
   });
 
-  it('should return Status Code 201 for /customers POST method', () => { // eslint-disable-line
+  it('should return Status Code 201 for /customers POST method', () => {
     const url = '/v1/customers?fullName=Geralt of Rivia&gender=Masculino&birthdate=02/03/1200&age=38&city=Rivia'; // eslint-disable-line
 
     return request(server.listener)

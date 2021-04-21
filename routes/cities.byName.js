@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const logger = require('../logger/logger');
-const City = require('../modules/cities/model.cities');
+const CitiesQuery = require('../modules/cities/queries.cities');
 
 const listCitiesByName = {
   path: '/v1/cities/name/{name}',
@@ -13,11 +13,8 @@ const listCitiesByName = {
     let response;
 
     try {
-      const cities = await City.findAll({
-        where: {
-          name,
-        },
-      });
+      const findByName = new CitiesQuery(name);
+      const cities = await findByName.findByName();
 
       response = h.response(cities);
       response.type('application/json');
