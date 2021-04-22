@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const logger = require('../logger/logger');
-const Customers = require('../modules/customers/model.customers');
+const CustomersQuery = require('../modules/customers/queries.customers');
 
 const createCustomer = {
   path: '/v1/customers',
@@ -12,14 +12,21 @@ const createCustomer = {
     let response;
 
     try {
-      await Customers.update(request.query, {
-        where: {
-          id: request.query.id,
-        },
-      });
+      const {
+        id,
+        fullName,
+        gender,
+        birthdate,
+        age,
+        city,
+      } = request.query;
+      const customer = new CustomersQuery(fullName, gender, birthdate, age, city);
+      customer.setId(id);
+      await customer.update();
 
-      response = h.response({ msg: 'success' });
+      response = h.response({ msg: 'customer updated' });
       response.type('application/json');
+      response.code(202);
     } catch (error) {
       logger.error(`[createCustomer.handler] Error handling the request: ${error.stack}`);
       Boom.badRequest('Internal Error');
