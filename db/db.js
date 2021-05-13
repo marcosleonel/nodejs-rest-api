@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-// TODO: Mudar o banco para Postgres.
+/* This is just for experimental use. It's not a production best practice. */
 const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports = sequelize;

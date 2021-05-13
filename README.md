@@ -1,15 +1,15 @@
-# Node.js REST API
+# Node.js REST + GraphQL API
 
-API para fazer o cadastro de cidades e pessoas.
+A simple example API to register cities and customers.
 
-## Requisitos
+## Requirements
 
 * Node 10+
 * SQLite 3
 
-## Execução
+## Run
 
-Para executar o app execute:
+To run the app:
 
 ```bash
 yarn install
